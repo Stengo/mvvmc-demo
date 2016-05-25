@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import MVVM_C
 
 class MVVMCAuthenticateViewModelTests: XCTestCase
 {
