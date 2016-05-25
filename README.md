@@ -6,5 +6,5 @@ This code is the sample code from a talk called MVVM-C in Practice presented at 
 + Slides: Can be found [here](https://speakerdeck.com/macdevnet/mvvm-c-in-practice)
 + Video: Not Yet Released
 
-
-
+## Fork notes
+I intend to add tests to the coordinators and slightly rework the code for maintainability.
