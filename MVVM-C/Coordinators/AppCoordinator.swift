@@ -12,11 +12,8 @@ import UIKit
 
 class AppCoordinator: Coordinator
 {
-    private let AUTHENTICATION_KEY: String  = "Authentication"
-    private let LIST_KEY: String  = "List"
-
     private var window: UIWindow
-    private(set) var coordinators = [String:Coordinator]()
+    private(set) var coordinators = [CoordinatorType:Coordinator]()
     
     init(window: UIWindow)
     {
@@ -44,14 +41,14 @@ extension AppCoordinator: AuthenticationCoordinatorDelegate
     private func showAuthentication()
     {
         let authenticationCoordinator = AuthenticationCoordinator(window: window)
-        coordinators[AUTHENTICATION_KEY] = authenticationCoordinator
+        coordinators[CoordinatorType.Authentication] = authenticationCoordinator
         authenticationCoordinator.delegate = self
         authenticationCoordinator.start()
     }
     
     func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator)
     {
-        coordinators[AUTHENTICATION_KEY] = nil
+        coordinators[CoordinatorType.Authentication] = nil
         showList()
     }
 }
@@ -62,14 +59,14 @@ extension AppCoordinator: ListCoordinatorDelegate
     private func showList()
     {
         let listCoordinator = ListCoordinator(window: window)
-        coordinators[LIST_KEY] = listCoordinator
+        coordinators[CoordinatorType.List] = listCoordinator
         listCoordinator.delegate = self
         listCoordinator.start()
     }
     
     func listCoordinatorDidFinish(listCoordinator listCoordinator: ListCoordinator)
     {
-        coordinators[LIST_KEY] = nil
+        coordinators[CoordinatorType.List] = nil
     }
 }
 
