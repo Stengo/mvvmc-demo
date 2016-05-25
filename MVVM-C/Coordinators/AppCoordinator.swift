@@ -16,7 +16,7 @@ class AppCoordinator: Coordinator
     private let LIST_KEY: String  = "List"
 
     private var window: UIWindow
-    private var coordinators = [String:Coordinator]()
+    private(set) var coordinators = [String:Coordinator]()
     
     init(window: UIWindow)
     {
