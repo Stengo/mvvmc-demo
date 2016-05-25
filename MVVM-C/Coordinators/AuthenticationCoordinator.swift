@@ -16,7 +16,7 @@ protocol AuthenticationCoordinatorDelegate: class
 class AuthenticationCoordinator: Coordinator
 {
     weak var delegate: AuthenticationCoordinatorDelegate?
-    let window: UIWindow
+    private let window: UIWindow
     
     init(window: UIWindow)
     {

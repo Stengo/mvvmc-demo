@@ -17,8 +17,8 @@ protocol DetailCoordinatorDelegate: class
 class DetailCoordinator: Coordinator
 {
     weak var delegate: DetailCoordinatorDelegate?
-    let dataItem: DataItem
-    var window: UIWindow
+    private let dataItem: DataItem
+    private var window: UIWindow
     
     init(window: UIWindow, dataItem: DataItem)
     {

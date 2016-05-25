@@ -22,9 +22,9 @@ class ListCoordinator: Coordinator
     }
     
     weak var delegate: ListCoordinatorDelegate?
-    var detailCoordinator: DetailCoordinator?
-    var window: UIWindow
-    var listViewController: MVVMCListViewController?
+    private var detailCoordinator: DetailCoordinator?
+    private var window: UIWindow
+    private var listViewController: MVVMCListViewController?
     
     func start()
     {

@@ -15,8 +15,8 @@ class AppCoordinator: Coordinator
     private let AUTHENTICATION_KEY: String  = "Authentication"
     private let LIST_KEY: String  = "List"
 
-    var window: UIWindow
-    var coordinators = [String:Coordinator]()
+    private var window: UIWindow
+    private var coordinators = [String:Coordinator]()
     
     init(window: UIWindow)
     {
@@ -37,11 +37,11 @@ class AppCoordinator: Coordinator
 
 extension AppCoordinator: AuthenticationCoordinatorDelegate
 {
-    var isLoggedIn: Bool {
+    private var isLoggedIn: Bool {
         return false;
     }
     
-    func showAuthentication()
+    private func showAuthentication()
     {
         let authenticationCoordinator = AuthenticationCoordinator(window: window)
         coordinators[AUTHENTICATION_KEY] = authenticationCoordinator
@@ -59,7 +59,7 @@ extension AppCoordinator: AuthenticationCoordinatorDelegate
 
 extension AppCoordinator: ListCoordinatorDelegate
 {
-    func showList()
+    private func showList()
     {
         let listCoordinator = ListCoordinator(window: window)
         coordinators[LIST_KEY] = listCoordinator
