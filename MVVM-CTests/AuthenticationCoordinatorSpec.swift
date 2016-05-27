@@ -19,6 +19,16 @@ class AuthenticationCoordinatorSpec: QuickSpec {
                 it("sets the authentication view controller as root view controller") {
                     expect(window.rootViewController).to(beAKindOf(MVVMCAuthenticationViewController))
                 }
+                
+                it("sets assigns an authentication view model to the controller") {
+                    let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
+                    expect(authenticationViewController.viewModel).toNot(beNil())
+                }
+                
+                it("sets itself as the root view models coordinator delegate") {
+                    let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
+                    expect(authenticationViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(authenticationCoordinator))
+                }
             }
             
             describe("authenticateViewModelDidLogin") {
@@ -34,6 +44,10 @@ class AuthenticationCoordinatorSpec: QuickSpec {
                 it("calls the delegates did finish function") {
                     expect(mockDelegate.wasCalled).to(beTrue())
                 }
+                
+                it("passes itself to the did finish function") {
+                    expect(mockDelegate.lastCaller).to(beIdenticalTo(authenticationCoordinator))
+                }
             }
         }
     }
@@ -41,8 +55,10 @@ class AuthenticationCoordinatorSpec: QuickSpec {
 
 private class MockAuthenticationCoordinatorDelegate: AuthenticationCoordinatorDelegate {
     private(set) var wasCalled = false
+    private(set) var lastCaller: Coordinator!
     
     func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator) {
         wasCalled = true
+        lastCaller = authenticationCoordinator
     }
 }
