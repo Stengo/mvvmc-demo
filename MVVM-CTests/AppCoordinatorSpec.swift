@@ -15,8 +15,19 @@ class AppCoordinatorSpec: QuickSpec {
             })
             
             describe("start") {
-                it("adds the authentication coordinator to the child coordinator list") {
+                it("adds some coordinator to the child coordinator list") {
                     expect(appCoordinator.coordinators[CoordinatorType.Authentication]).toNot(beNil())
+                }
+                
+                it("adds the authentication coordinator to the child coordinator list") {
+                    if (appCoordinator.coordinators[CoordinatorType.Authentication] is AuthenticationCoordinator) == false {
+                        fail("Expected an AuthenticationCoordinator, got something else")
+                    }
+                }
+                
+                it("sets itself as the authentication coordinators delegate") {
+                    let authenticationCoordinator = appCoordinator.coordinators[CoordinatorType.Authentication] as! AuthenticationCoordinator
+                    expect(authenticationCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
                 }
             }
             
@@ -38,6 +49,11 @@ class AppCoordinatorSpec: QuickSpec {
                     if (appCoordinator.coordinators[CoordinatorType.List] is ListCoordinator) == false {
                         fail("Expected a ListCoordinator, got something else")
                     }
+                }
+                
+                it("sets itself as the list coordinators delegate") {
+                    let listCoordinator = appCoordinator.coordinators[CoordinatorType.List] as! ListCoordinator
+                    expect(listCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
                 }
             }
             
