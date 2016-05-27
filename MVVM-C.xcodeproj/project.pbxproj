@@ -130,6 +130,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6DFBDE2C1CF841B0005CB661 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				6DBFF6B11CF5C2F600428D40 /* AppCoordinatorSpec.swift */,
+				6D1D27D61CF5ECE4005CDC1E /* AuthenticationCoordinatorSpec.swift */,
+				6DB659011CF828EC00A8CD8A /* ListCoordinatorSpec.swift */,
+				6DFBDE2A1CF83CA7005CB661 /* DetailCoordinatorSpec.swift */,
+			);
+			name = Coordinators;
+			sourceTree = "<group>";
+		};
+		6DFBDE2D1CF841C9005CB661 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E241AB981CF35BF3005A2CCA /* MVVMCAuthenticateViewModelTests.swift */,
+				E241ABAB1CF44C84005A2CCA /* MVVMCListViewModelTests.swift */,
+				E241ABAD1CF45D44005A2CCA /* MVVMDetailViewModelTests.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		9863E7997A8F90CA6C60CD8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,13 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				E25114791CED9DC100D9868B /* Info.plist */,
-				E241AB981CF35BF3005A2CCA /* MVVMCAuthenticateViewModelTests.swift */,
-				E241ABAB1CF44C84005A2CCA /* MVVMCListViewModelTests.swift */,
-				E241ABAD1CF45D44005A2CCA /* MVVMDetailViewModelTests.swift */,
-				6DBFF6B11CF5C2F600428D40 /* AppCoordinatorSpec.swift */,
-				6D1D27D61CF5ECE4005CDC1E /* AuthenticationCoordinatorSpec.swift */,
-				6DB659011CF828EC00A8CD8A /* ListCoordinatorSpec.swift */,
-				6DFBDE2A1CF83CA7005CB661 /* DetailCoordinatorSpec.swift */,
+				6DFBDE2C1CF841B0005CB661 /* Coordinators */,
+				6DFBDE2D1CF841C9005CB661 /* ViewModels */,
 			);
 			path = "MVVM-CTests";
 			sourceTree = "<group>";
