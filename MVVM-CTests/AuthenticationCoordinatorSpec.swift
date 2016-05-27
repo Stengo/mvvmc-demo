@@ -57,7 +57,7 @@ class AuthenticationCoordinatorSpec: QuickSpec {
 
 private class MockAuthenticationCoordinatorDelegate: AuthenticationCoordinatorDelegate {
     private(set) var wasCalled = false
-    private(set) var lastCaller: Coordinator!
+    private(set) var lastCaller: AuthenticationCoordinator!
     
     func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator) {
         wasCalled = true
