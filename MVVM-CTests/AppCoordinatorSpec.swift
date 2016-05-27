@@ -27,6 +27,7 @@ class AppCoordinatorSpec: QuickSpec {
                 
                 it("sets itself as the authentication coordinators delegate") {
                     let authenticationCoordinator = appCoordinator.coordinators[CoordinatorType.Authentication] as! AuthenticationCoordinator
+                    
                     expect(authenticationCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
                 }
             }
@@ -53,6 +54,7 @@ class AppCoordinatorSpec: QuickSpec {
                 
                 it("sets itself as the list coordinators delegate") {
                     let listCoordinator = appCoordinator.coordinators[CoordinatorType.List] as! ListCoordinator
+                    
                     expect(listCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
                 }
             }
