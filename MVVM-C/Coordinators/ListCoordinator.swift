@@ -22,7 +22,7 @@ class ListCoordinator: Coordinator
     }
     
     weak var delegate: ListCoordinatorDelegate?
-    private var detailCoordinator: DetailCoordinator?
+    private(set) var detailCoordinator: DetailCoordinator?
     private var window: UIWindow
     private var listViewController: MVVMCListViewController?
     
