@@ -8,6 +8,7 @@ class MVVMCAuthenticateViewModelSpec: QuickSpec {
         describe("MVVMCAuthenticateViewModel") {
             var authenticateViewModel: MVVMCAuthenticateViewModel!
             var mockDelegate: MockAuthenticateViewModelDelegate!
+            var mockCoordinatorDelegate: MockAuthenticateViewModelCoordinatorDelegate!
             
             beforeEach {
                 authenticateViewModel = MVVMCAuthenticateViewModel()
@@ -93,11 +94,19 @@ class MVVMCAuthenticateViewModelSpec: QuickSpec {
                     beforeEach {
                         authenticateViewModel.email = "b.blaington@blainc.com"
                         authenticateViewModel.password = "password"
-                        authenticateViewModel.submit()
                     }
                     
                     it("calls its data model") {
+                        authenticateViewModel.submit()
                         expect(mockModel.wasCalled).to(beTrue())
+                    }
+                    
+                    it("calls its coordinator delegate") {
+                        waitUntil { done in
+                            mockCoordinatorDelegate = MockAuthenticateViewModelCoordinatorDelegate(completion: done)
+                            authenticateViewModel.coordinatorDelegate = mockCoordinatorDelegate
+                            authenticateViewModel.submit()
+                        }
                     }
                 }
             }
@@ -169,6 +178,21 @@ private class MockAuthenticateModel: AuthenticateModel {
     private(set) var wasCalled = false
     
     func login(email email: String, password: String, completionHandler: (error: NSError?) ->()) {
+        completionHandler(error: nil)
         wasCalled = true
+    }
+}
+
+private class MockAuthenticateViewModelCoordinatorDelegate: AuthenticateViewModelCoordinatorDelegate {
+    typealias CompletionClosure = ()->()
+    
+    private let completion: CompletionClosure
+    
+    init(completion: CompletionClosure) {
+        self.completion = completion
+    }
+    
+    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel) {
+        completion()
     }
 }
