@@ -15,11 +15,7 @@ class AppCoordinatorSpec: QuickSpec {
             })
             
             describe("start") {
-                it("adds some coordinator to the child coordinator list") {
-                    expect(appCoordinator.coordinators[CoordinatorType.Authentication]).toNot(beNil())
-                }
-                
-                it("adds the authentication coordinator to the child coordinator list") {
+                it("sets the authentication coordinator") {
                     if (appCoordinator.coordinators[CoordinatorType.Authentication] is AuthenticationCoordinator) == false {
                         fail("Expected an AuthenticationCoordinator, got something else")
                     }
@@ -38,15 +34,11 @@ class AppCoordinatorSpec: QuickSpec {
                     appCoordinator.authenticationCoordinatorDidFinish(authenticationCoordinator: authenticationCoordinator)
                 })
                 
-                it("removes the authentication coordinator from the child coordinator list") {
+                it("removes the authentication coordinator") {
                     expect(appCoordinator.coordinators[CoordinatorType.Authentication]).to(beNil())
                 }
                 
-                it("adds some coordinator to the child coordinator list") {
-                    expect(appCoordinator.coordinators[CoordinatorType.List]).toNot(beNil())
-                }
-                
-                it("adds a list coordinator to the child coordinator list") {
+                it("sets the list coordinator") {
                     if (appCoordinator.coordinators[CoordinatorType.List] is ListCoordinator) == false {
                         fail("Expected a ListCoordinator, got something else")
                     }
@@ -67,7 +59,7 @@ class AppCoordinatorSpec: QuickSpec {
                     appCoordinator.listCoordinatorDidFinish(listCoordinator: listCoordinator)
                 })
                 
-                it("removes the list coordinator from the child coordinator list") {
+                it("removes the list coordinator") {
                     expect(appCoordinator.coordinators[CoordinatorType.List]).to(beNil())
                 }
             }

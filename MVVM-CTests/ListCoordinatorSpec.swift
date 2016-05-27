@@ -20,13 +20,13 @@ class ListCoordinatorSpec: QuickSpec {
                     expect(window.rootViewController).to(beAKindOf(MVVMCListViewController))
                 }
                 
-                it("assigns a list view model to the controller") {
+                it("sets the list view model of the controller") {
                     let listViewController = window.rootViewController as! MVVMCListViewController
                     
                     expect(listViewController.viewModel).toNot(beNil())
                 }
                 
-                it("sets itself as the root view models coordinator delegate") {
+                it("sets itself as the list view models coordinator delegate") {
                     let listViewController = window.rootViewController as! MVVMCListViewController
                     
                     expect(listViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(listCoordinator))

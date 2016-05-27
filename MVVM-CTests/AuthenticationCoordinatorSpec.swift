@@ -20,13 +20,13 @@ class AuthenticationCoordinatorSpec: QuickSpec {
                     expect(window.rootViewController).to(beAKindOf(MVVMCAuthenticationViewController))
                 }
                 
-                it("assigns an authentication view model to the controller") {
+                it("sets the authentication view model of the controller") {
                     let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
                     
                     expect(authenticationViewController.viewModel).toNot(beNil())
                 }
                 
-                it("sets itself as the root view models coordinator delegate") {
+                it("sets itself as the authentication view models coordinator delegate") {
                     let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
                     
                     expect(authenticationViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(authenticationCoordinator))
