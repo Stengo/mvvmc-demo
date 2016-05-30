@@ -15,6 +15,8 @@
 		6DFBDE2F1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE2E1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift */; };
 		6DFBDE311CF8652E005CB661 /* MVVMCListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE301CF8652E005CB661 /* MVVMCListViewModelSpec.swift */; };
 		6DFBDE331CF891A3005CB661 /* MVVMDetailViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE321CF891A3005CB661 /* MVVMDetailViewModelSpec.swift */; };
+		6DFBDE3E1CFC7A5C005CB661 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE3D1CFC7A5C005CB661 /* Endpoint.swift */; };
+		6DFBDE421CFC7AC5005CB661 /* DetailEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE411CFC7AC5005CB661 /* DetailEndpoint.swift */; };
 		D110DCA7857DDD19A2A5B750 /* Pods_MVVM_CTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02F832C92473BAACA7B44F1 /* Pods_MVVM_CTests.framework */; };
 		E24810131CF08A7B002513B0 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810121CF08A7B002513B0 /* ListCoordinator.swift */; };
 		E24810151CF08B55002513B0 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24810141CF08B55002513B0 /* ListViewModel.swift */; };
@@ -67,6 +69,8 @@
 		6DFBDE2E1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCAuthenticateViewModelSpec.swift; sourceTree = "<group>"; };
 		6DFBDE301CF8652E005CB661 /* MVVMCListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListViewModelSpec.swift; sourceTree = "<group>"; };
 		6DFBDE321CF891A3005CB661 /* MVVMDetailViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMDetailViewModelSpec.swift; sourceTree = "<group>"; };
+		6DFBDE3D1CFC7A5C005CB661 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		6DFBDE411CFC7AC5005CB661 /* DetailEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEndpoint.swift; sourceTree = "<group>"; };
 		E24810121CF08A7B002513B0 /* ListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
 		E24810141CF08B55002513B0 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		E24810171CF08BC1002513B0 /* MVVMCListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListViewModel.swift; sourceTree = "<group>"; };
@@ -151,6 +155,15 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
+		6DFBDE431CFC7AD9005CB661 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				6DFBDE3D1CFC7A5C005CB661 /* Endpoint.swift */,
+				6DFBDE411CFC7AC5005CB661 /* DetailEndpoint.swift */,
+			);
+			name = Endpoints;
+			sourceTree = "<group>";
+		};
 		9863E7997A8F90CA6C60CD8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				E296BBB71CEDA07500420864 /* Coordinators */,
+				6DFBDE431CFC7AD9005CB661 /* Endpoints */,
 				E296BBB81CEDA07500420864 /* Models */,
 				E296BBB91CEDA07500420864 /* ViewModels */,
 				E296BBBA1CEDA07500420864 /* Views */,
@@ -467,7 +481,9 @@
 				E24810341CF113A1002513B0 /* MVVMCDetailViewModel.swift in Sources */,
 				E24810301CF11241002513B0 /* MVVMCDetailModel.swift in Sources */,
 				E296BBCD1CEEEA6C00420864 /* MVVMCAuthenticateViewModel.swift in Sources */,
+				6DFBDE3E1CFC7A5C005CB661 /* Endpoint.swift in Sources */,
 				E24810131CF08A7B002513B0 /* ListCoordinator.swift in Sources */,
+				6DFBDE421CFC7AC5005CB661 /* DetailEndpoint.swift in Sources */,
 				E248101B1CF08C2D002513B0 /* ListModel.swift in Sources */,
 				E248102A1CF094B7002513B0 /* MVVMCItemTableViewCell.swift in Sources */,
 				E248102E1CF11203002513B0 /* DetailModel.swift in Sources */,

@@ -22,7 +22,14 @@ class AppCoordinator: Coordinator
     
     func start()
     {
-        showList()
+        startWithEndpoint(nil)
+    }
+    
+    func startWithEndpoint(endpoint: Endpoint?) {
+        switch endpoint {
+        default:
+            showListWithEndpoint(endpoint)
+        }
     }
 }
 
@@ -31,10 +38,15 @@ extension AppCoordinator: ListCoordinatorDelegate
 {
     private func showList()
     {
+        showListWithEndpoint(nil)
+    }
+    
+    private func showListWithEndpoint(endpoint: Endpoint?)
+    {
         let listCoordinator = ListCoordinator(window: window)
         coordinators[CoordinatorType.List] = listCoordinator
         listCoordinator.delegate = self
-        listCoordinator.start()
+        listCoordinator.startWithEndpoint(endpoint)
     }
     
     func listCoordinatorDidFinish(listCoordinator listCoordinator: ListCoordinator)

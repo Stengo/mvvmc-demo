@@ -30,6 +30,22 @@ class ListCoordinator: Coordinator
     
     func start()
     {
+        startWithEndpoint(nil)
+    }
+    
+    func startWithEndpoint(endpoint: Endpoint?) {
+        setupList()
+        
+        switch endpoint {
+        case let detailEndpoint as DetailEndpoint:
+            // ugly, requires more thought
+            listViewModelDidSelectData(self.listViewController!.viewModel!, data: self.listViewController!.viewModel!.itemAtIndex(detailEndpoint.itemIndex!)!)
+        default:
+            return
+        }
+    }
+    
+    private func setupList() {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         listViewController = storyboard.instantiateViewControllerWithIdentifier("List") as? MVVMCListViewController
         

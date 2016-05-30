@@ -14,14 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
     var appCoordinator: AppCoordinator!
-
+    
     func application(application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         
         window = UIWindow()
         appCoordinator = AppCoordinator(window: window!)
-        appCoordinator.start()
+        
+        // show auth when restarting the app
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(false , forKey: "loggedIn")
+        
+        // use detail endpoint
+//        appCoordinator.start()
+        let detailEndpoint = DetailEndpoint(itemIndex: 0)
+        appCoordinator.startWithEndpoint(detailEndpoint)
+        
+        
         window?.makeKeyAndVisible()
         
         return true

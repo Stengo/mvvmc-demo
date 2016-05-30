@@ -28,6 +28,17 @@ class DetailCoordinator: Coordinator
     
     func start()
     {
+        startWithEndpoint(nil)
+    }
+    
+    func startWithEndpoint(endpoint: Endpoint?) {
+        switch endpoint {
+        default:
+            setupDetail()
+        }
+    }
+    
+    private func setupDetail() {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         if let vc = storyboard.instantiateViewControllerWithIdentifier("Detail") as? MVVMCDetailViewController {
             let viewModel =  MVVMCDetailViewModel()
@@ -42,9 +53,9 @@ class DetailCoordinator: Coordinator
 extension DetailCoordinator: DetailViewModelCoordinatorDelegate
 {
     
- func detailViewModelDidEnd(viewModel: DetailViewModel)
- {
-    delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
- }
+    func detailViewModelDidEnd(viewModel: DetailViewModel)
+    {
+        delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
+    }
     
 }

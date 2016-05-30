@@ -1,9 +1,9 @@
-//
-//  DetailEndpoint.swift
-//  MVVM-C
-//
-//  Created by Bastian Andelefski on 30/05/16.
-//  Copyright © 2016 Streambyte Limited. All rights reserved.
-//
-
 import Foundation
+
+class DetailEndpoint: Endpoint {
+    private(set) var itemIndex: Int?
+    
+    init(itemIndex: Int) {
+        self.itemIndex = itemIndex
+    }
+}

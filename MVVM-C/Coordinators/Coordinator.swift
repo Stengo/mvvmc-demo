@@ -9,7 +9,8 @@
 import UIKit
 
 protocol Coordinator: class
-{    
+{
     func start()
+    func startWithEndpoint(endpoint: Endpoint?)
 }
 

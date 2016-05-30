@@ -25,11 +25,22 @@ class AuthenticationCoordinator: Coordinator
     
     func start()
     {
+        startWithEndpoint(nil)
+    }
+    
+    func startWithEndpoint(endpoint: Endpoint?) {
+        switch endpoint {
+        default:
+            setupAuthentication()
+        }
+    }
+    
+    private func setupAuthentication() {
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         if let vc = storyboard.instantiateViewControllerWithIdentifier("Authentication") as? MVVMCAuthenticationViewController {
             let viewModel =  MVVMCAuthenticateViewModel()
             let model = MVVMCAuthenticateModel()
-            model.loggedIn({ (loggedIn) in
+            model.loggedIn { (loggedIn) in
                 if loggedIn {
                     self.delegate?.authenticationCoordinatorDidFinish(authenticationCoordinator: self)
                 } else {
@@ -38,7 +49,7 @@ class AuthenticationCoordinator: Coordinator
                     vc.viewModel = viewModel
                     self.window.rootViewController = vc
                 }
-            })
+            }
         }
     }
 }
