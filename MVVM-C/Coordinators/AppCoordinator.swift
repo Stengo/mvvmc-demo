@@ -22,33 +22,6 @@ class AppCoordinator: Coordinator
     
     func start()
     {
-        if isLoggedIn {
-            showList()
-        } else {
-            showAuthentication()
-        }
-    }
-}
-
-
-
-extension AppCoordinator: AuthenticationCoordinatorDelegate
-{
-    private var isLoggedIn: Bool {
-        return false;
-    }
-    
-    private func showAuthentication()
-    {
-        let authenticationCoordinator = AuthenticationCoordinator(window: window)
-        coordinators[CoordinatorType.Authentication] = authenticationCoordinator
-        authenticationCoordinator.delegate = self
-        authenticationCoordinator.start()
-    }
-    
-    func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator)
-    {
-        coordinators[CoordinatorType.Authentication] = nil
         showList()
     }
 }
