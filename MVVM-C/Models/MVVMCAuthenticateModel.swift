@@ -10,7 +10,7 @@ import Foundation
 
 class MVVMCAuthenticateModel: AuthenticateModel
 {
-    private(set) var loggedIn = false
+    private let defaults = NSUserDefaults.standardUserDefaults()
     
     func login(email email: String, password: String, completionHandler: (error: NSError?) ->())
     {
@@ -20,7 +20,13 @@ class MVVMCAuthenticateModel: AuthenticateModel
                             code: 1,
                             userInfo: [NSLocalizedDescriptionKey: "Invalid Email or Password"])
         }
-        loggedIn = true
+        let successful = error == nil ? true : false
+        defaults.setBool(successful , forKey: "loggedIn")
         completionHandler(error: error)
+    }
+    
+    func loggedIn(completionHandler: (loggedIn: Bool) -> Void) {
+        let loggedIn = defaults.boolForKey("loggedIn")
+        completionHandler(loggedIn: loggedIn)
     }
 }

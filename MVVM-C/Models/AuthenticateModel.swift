@@ -12,4 +12,5 @@ import Foundation
 protocol AuthenticateModel
 {
     func login(email email: String, password: String, completionHandler: (error: NSError?) ->())
+    func loggedIn(completionHandler: (loggedIn: Bool) -> Void)
 }

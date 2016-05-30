@@ -28,10 +28,17 @@ class AuthenticationCoordinator: Coordinator
         let storyboard = UIStoryboard(name: "MVVM-C", bundle: nil)
         if let vc = storyboard.instantiateViewControllerWithIdentifier("Authentication") as? MVVMCAuthenticationViewController {
             let viewModel =  MVVMCAuthenticateViewModel()
-            viewModel.model = MVVMCAuthenticateModel()
-            viewModel.coordinatorDelegate = self
-            vc.viewModel = viewModel
-            window.rootViewController = vc
+            let model = MVVMCAuthenticateModel()
+            model.loggedIn({ (loggedIn) in
+                if loggedIn {
+                    self.delegate?.authenticationCoordinatorDidFinish(authenticationCoordinator: self)
+                } else {
+                    viewModel.model = MVVMCAuthenticateModel()
+                    viewModel.coordinatorDelegate = self
+                    vc.viewModel = viewModel
+                    self.window.rootViewController = vc
+                }
+            })
         }
     }
 }
