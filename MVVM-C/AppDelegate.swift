@@ -13,6 +13,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
+    var navigationController: UINavigationController?
     var appCoordinator: AppCoordinator!
     
     func application(application: UIApplication,
@@ -20,16 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         
         window = UIWindow()
-        appCoordinator = AppCoordinator(window: window!)
+        navigationController = UINavigationController()
+        window?.rootViewController = navigationController
+        appCoordinator = AppCoordinator(navigationController: navigationController!)
         
         // show auth when restarting the app
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setBool(false , forKey: "loggedIn")
         
         // use detail endpoint
-//        appCoordinator.start()
-        let detailEndpoint = DetailEndpoint(itemIndex: 0)
-        appCoordinator.startWithEndpoint(detailEndpoint)
+        appCoordinator.start()
+//        let detailEndpoint = DetailEndpoint(itemIndex: 0)
+//        appCoordinator.startWithEndpoint(detailEndpoint)
         
         
         window?.makeKeyAndVisible()

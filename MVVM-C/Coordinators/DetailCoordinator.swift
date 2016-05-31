@@ -18,11 +18,11 @@ class DetailCoordinator: Coordinator
 {
     weak var delegate: DetailCoordinatorDelegate?
     private let dataItem: DataItem
-    private var window: UIWindow
+    private var navigationController: UINavigationController
     
-    init(window: UIWindow, dataItem: DataItem)
+    init(navigationController: UINavigationController, dataItem: DataItem)
     {
-        self.window = window
+        self.navigationController = navigationController
         self.dataItem = dataItem
     }
     
@@ -45,7 +45,7 @@ class DetailCoordinator: Coordinator
             viewModel.model = MVVMCDetailModel(detailItem: dataItem)
             viewModel.coordinatorDelegate = self
             vc.viewModel = viewModel
-            window.rootViewController = vc
+            navigationController.pushViewController(vc, animated: true)
         }
     }
 }

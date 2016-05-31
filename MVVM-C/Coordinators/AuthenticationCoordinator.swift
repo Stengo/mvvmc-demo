@@ -16,11 +16,11 @@ protocol AuthenticationCoordinatorDelegate: class
 class AuthenticationCoordinator: Coordinator
 {
     weak var delegate: AuthenticationCoordinatorDelegate?
-    private let window: UIWindow
+    private let navigationController: UINavigationController
     
-    init(window: UIWindow)
+    init(navigationController: UINavigationController)
     {
-        self.window = window
+        self.navigationController = navigationController
     }
     
     func start()
@@ -47,7 +47,7 @@ class AuthenticationCoordinator: Coordinator
                     viewModel.model = MVVMCAuthenticateModel()
                     viewModel.coordinatorDelegate = self
                     vc.viewModel = viewModel
-                    self.window.rootViewController = vc
+                    self.navigationController.pushViewController(vc, animated: true)
                 }
             }
         }

@@ -17,15 +17,15 @@ class ListCoordinator: Coordinator
 {
     private var selectedData: DataItem?
     
-    init(window: UIWindow)
+    init(navigationController: UINavigationController)
     {
-        self.window = window
+        self.navigationController = navigationController
     }
     
     weak var delegate: ListCoordinatorDelegate?
     private(set) var detailCoordinator: DetailCoordinator?
     private(set) var authenticationCoordinator: AuthenticationCoordinator?
-    private var window: UIWindow
+    private var navigationController: UINavigationController
     private var listViewController: MVVMCListViewController?
     
     func start()
@@ -55,7 +55,7 @@ class ListCoordinator: Coordinator
         viewModel.model = MVVMCListModel()
         viewModel.coordinatorDelegate = self
         listViewController.viewModel = viewModel
-        window.rootViewController = listViewController
+        navigationController.pushViewController(listViewController, animated: false)
     }
 }
 
@@ -72,8 +72,10 @@ extension ListCoordinator: DetailCoordinatorDelegate
 {
     func detailCoordinatorDidFinish(detailCoordinator detailCoordinator: DetailCoordinator)
     {
+        guard let listViewController = listViewController else { return }
+        
         self.detailCoordinator = nil
-        window.rootViewController = listViewController
+        navigationController.pushViewController(listViewController, animated: true)
     }
 }
 
@@ -86,7 +88,7 @@ extension ListCoordinator: AuthenticationCoordinatorDelegate
     
     private func showAuthentication()
     {
-        let authenticationCoordinator = AuthenticationCoordinator(window: window)
+        let authenticationCoordinator = AuthenticationCoordinator(navigationController: navigationController)
         self.authenticationCoordinator = authenticationCoordinator
         authenticationCoordinator.delegate = self
         authenticationCoordinator.start()
@@ -95,10 +97,11 @@ extension ListCoordinator: AuthenticationCoordinatorDelegate
     func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator)
     {
         self.authenticationCoordinator = nil
+        navigationController.popViewControllerAnimated(true)
         guard let data = selectedData else {
             return
         }
-        detailCoordinator = DetailCoordinator(window: window, dataItem: data)
+        detailCoordinator = DetailCoordinator(navigationController: navigationController, dataItem: data)
         detailCoordinator?.delegate = self
         detailCoordinator?.start()
     }
