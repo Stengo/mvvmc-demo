@@ -9,8 +9,8 @@ class AppCoordinatorSpec: QuickSpec {
             var appCoordinator: AppCoordinator!
             
             beforeEach({
-                let window = UIWindow()
-                appCoordinator = AppCoordinator(window: window)
+                let navigationController = UINavigationController()
+                appCoordinator = AppCoordinator(navigationController: navigationController)
                 appCoordinator.startWithEndpoint(nil)
             })
             

@@ -7,28 +7,28 @@ class DetailCoordinatorSpec: QuickSpec {
     override func spec() {
         describe("DetailCoordinator") {
             var detailCoordinator: DetailCoordinator!
-            var window: UIWindow!
+            var navigationController: UINavigationController!
             
             beforeEach {
-                window = UIWindow()
+                navigationController = UINavigationController()
                 let dataItem = MVVMCDataItem(name: "Bla Blaington", role: "Bla")
-                detailCoordinator = DetailCoordinator(window: window, dataItem: dataItem)
+                detailCoordinator = DetailCoordinator(navigationController: navigationController, dataItem: dataItem)
                 detailCoordinator.start()
             }
             
             describe("start") {
                 it("sets the detail view controller as root view controller") {
-                    expect(window.rootViewController).to(beAKindOf(MVVMCDetailViewController))
+                    expect(navigationController.topViewController).to(beAKindOf(MVVMCDetailViewController))
                 }
                 
                 it("sets the detail view model of the controller") {
-                    let detailViewController = window.rootViewController as! MVVMCDetailViewController
+                    let detailViewController = navigationController.topViewController as! MVVMCDetailViewController
                     
                     expect(detailViewController.viewModel).toNot(beNil())
                 }
                 
                 it("sets itself as the detail view models coordinator delegate") {
-                    let detailViewController = window.rootViewController as! MVVMCDetailViewController
+                    let detailViewController = navigationController.topViewController as! MVVMCDetailViewController
                     
                     expect(detailViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(detailCoordinator))
                 }

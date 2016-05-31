@@ -7,11 +7,11 @@ class ListCoordinatorSpec: QuickSpec {
     override func spec() {
         describe("ListCoordinator") {
             var listCoordinator: ListCoordinator!
-            var window: UIWindow!
+            var navigationController: UINavigationController!
             
             beforeEach({
-                window = UIWindow()
-                listCoordinator = ListCoordinator(window: window)
+                navigationController = UINavigationController()
+                listCoordinator = ListCoordinator(navigationController: navigationController)
             })
             
             describe("startWithEndpoint") {
@@ -21,17 +21,17 @@ class ListCoordinatorSpec: QuickSpec {
                     }
                     
                     it("sets the list view controller as root view controller") {
-                        expect(window.rootViewController).to(beAKindOf(MVVMCListViewController))
+                        expect(navigationController.topViewController).to(beAKindOf(MVVMCListViewController))
                     }
                     
                     it("sets the list view model of the controller") {
-                        let listViewController = window.rootViewController as! MVVMCListViewController
+                        let listViewController = navigationController.topViewController as! MVVMCListViewController
                         
                         expect(listViewController.viewModel).toNot(beNil())
                     }
                     
                     it("sets itself as the list view models coordinator delegate") {
-                        let listViewController = window.rootViewController as! MVVMCListViewController
+                        let listViewController = navigationController.topViewController as! MVVMCListViewController
                         
                         expect(listViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(listCoordinator))
                     }
@@ -83,7 +83,7 @@ class ListCoordinatorSpec: QuickSpec {
                 }
                 
                 it("sets the list view controller as the root view controller") {
-                    expect(window.rootViewController).to(beAKindOf(MVVMCListViewController))
+                    expect(navigationController.topViewController).to(beAKindOf(MVVMCListViewController))
                 }
             }
             

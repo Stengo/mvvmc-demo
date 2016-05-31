@@ -7,27 +7,27 @@ class AuthenticationCoordinatorSpec: QuickSpec {
     override func spec() {
         describe("AuthenticationCoordinator") {
             var authenticationCoordinator: AuthenticationCoordinator!
-            var window: UIWindow!
+            var navigationController: UINavigationController!
             
-            beforeEach({
-                window = UIWindow()
-                authenticationCoordinator = AuthenticationCoordinator(window: window)
+            beforeEach {
+                navigationController = UINavigationController()
+                authenticationCoordinator = AuthenticationCoordinator(navigationController: navigationController)
                 authenticationCoordinator.startWithEndpoint(nil)
-            })
+            }
             
             describe("startWithEndpoint") {
                 it("sets the authentication view controller as root view controller") {
-                    expect(window.rootViewController).to(beAKindOf(MVVMCAuthenticationViewController))
+                    expect(navigationController.topViewController).to(beAKindOf(MVVMCAuthenticationViewController))
                 }
                 
                 it("sets the authentication view model of the controller") {
-                    let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
+                    let authenticationViewController = navigationController.topViewController as! MVVMCAuthenticationViewController
                     
                     expect(authenticationViewController.viewModel).toNot(beNil())
                 }
                 
                 it("sets itself as the authentication view models coordinator delegate") {
-                    let authenticationViewController = window.rootViewController as! MVVMCAuthenticationViewController
+                    let authenticationViewController = navigationController.topViewController as! MVVMCAuthenticationViewController
                     
                     expect(authenticationViewController.viewModel!.coordinatorDelegate).to(beIdenticalTo(authenticationCoordinator))
                 }
