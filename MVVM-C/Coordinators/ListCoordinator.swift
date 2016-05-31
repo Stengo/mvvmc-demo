@@ -15,7 +15,7 @@ protocol ListCoordinatorDelegate: class
 
 class ListCoordinator: Coordinator
 {
-    var selectedData: DataItem?
+    private var selectedData: DataItem?
     
     init(window: UIWindow)
     {

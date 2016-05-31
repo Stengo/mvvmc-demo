@@ -181,6 +181,10 @@ private class MockAuthenticateModel: AuthenticateModel {
         completionHandler(error: nil)
         wasCalled = true
     }
+    
+    func loggedIn(completionHandler: (loggedIn: Bool) -> Void) {
+        completionHandler(loggedIn: false)
+    }
 }
 
 private class MockAuthenticateViewModelCoordinatorDelegate: AuthenticateViewModelCoordinatorDelegate {

@@ -11,33 +11,10 @@ class AppCoordinatorSpec: QuickSpec {
             beforeEach({
                 let window = UIWindow()
                 appCoordinator = AppCoordinator(window: window)
-                appCoordinator.start()
+                appCoordinator.startWithEndpoint(nil)
             })
             
-            describe("start") {
-                it("sets the authentication coordinator") {
-                    if (appCoordinator.coordinators[CoordinatorType.Authentication] is AuthenticationCoordinator) == false {
-                        fail("Expected an AuthenticationCoordinator, got something else")
-                    }
-                }
-                
-                it("sets itself as the authentication coordinators delegate") {
-                    let authenticationCoordinator = appCoordinator.coordinators[CoordinatorType.Authentication] as! AuthenticationCoordinator
-                    
-                    expect(authenticationCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
-                }
-            }
-            
-            describe("authenticationCoordinatorDidFinish") {
-                beforeEach({
-                    let authenticationCoordinator = appCoordinator.coordinators[CoordinatorType.Authentication] as! AuthenticationCoordinator
-                    appCoordinator.authenticationCoordinatorDidFinish(authenticationCoordinator: authenticationCoordinator)
-                })
-                
-                it("removes the authentication coordinator") {
-                    expect(appCoordinator.coordinators[CoordinatorType.Authentication]).to(beNil())
-                }
-                
+            describe("startWithEndpoint") {
                 it("sets the list coordinator") {
                     if (appCoordinator.coordinators[CoordinatorType.List] is ListCoordinator) == false {
                         fail("Expected a ListCoordinator, got something else")
@@ -53,8 +30,6 @@ class AppCoordinatorSpec: QuickSpec {
             
             describe("listCoordinatorDidFinish") {
                 beforeEach({
-                    let authenticationCoordinator = appCoordinator.coordinators[CoordinatorType.Authentication] as! AuthenticationCoordinator
-                    appCoordinator.authenticationCoordinatorDidFinish(authenticationCoordinator: authenticationCoordinator)
                     let listCoordinator = appCoordinator.coordinators[CoordinatorType.List] as! ListCoordinator
                     appCoordinator.listCoordinatorDidFinish(listCoordinator: listCoordinator)
                 })

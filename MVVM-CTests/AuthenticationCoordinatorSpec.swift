@@ -12,10 +12,10 @@ class AuthenticationCoordinatorSpec: QuickSpec {
             beforeEach({
                 window = UIWindow()
                 authenticationCoordinator = AuthenticationCoordinator(window: window)
-                authenticationCoordinator.start()
+                authenticationCoordinator.startWithEndpoint(nil)
             })
             
-            describe("start") {
+            describe("startWithEndpoint") {
                 it("sets the authentication view controller as root view controller") {
                     expect(window.rootViewController).to(beAKindOf(MVVMCAuthenticationViewController))
                 }
