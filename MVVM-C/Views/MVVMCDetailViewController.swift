@@ -45,10 +45,9 @@ class MVVMCDetailViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func doneButtonPressed(sender: AnyObject)
-    {
+    override func viewWillDisappear(animated: Bool) {
         viewModel?.done();
+        super.viewWillDisappear(animated)
     }
     
 }

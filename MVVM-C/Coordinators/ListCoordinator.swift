@@ -72,10 +72,7 @@ extension ListCoordinator: DetailCoordinatorDelegate
 {
     func detailCoordinatorDidFinish(detailCoordinator detailCoordinator: DetailCoordinator)
     {
-        guard let listViewController = listViewController else { return }
-        
         self.detailCoordinator = nil
-        navigationController.pushViewController(listViewController, animated: true)
     }
 }
 
