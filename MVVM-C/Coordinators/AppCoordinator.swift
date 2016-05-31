@@ -13,7 +13,7 @@ import UIKit
 class AppCoordinator: Coordinator
 {
     private var navigationController: UINavigationController
-    private(set) var coordinators = [CoordinatorType:Coordinator]()
+    private(set) var listCoordinator: ListCoordinator?
     
     init(navigationController: UINavigationController)
     {
@@ -43,15 +43,14 @@ extension AppCoordinator: ListCoordinatorDelegate
     
     private func showListWithEndpoint(endpoint: Endpoint?)
     {
-        let listCoordinator = ListCoordinator(navigationController: navigationController)
-        coordinators[CoordinatorType.List] = listCoordinator
-        listCoordinator.delegate = self
-        listCoordinator.startWithEndpoint(endpoint)
+        listCoordinator = ListCoordinator(navigationController: navigationController)
+        listCoordinator!.delegate = self
+        listCoordinator!.startWithEndpoint(endpoint)
     }
     
     func listCoordinatorDidFinish(listCoordinator listCoordinator: ListCoordinator)
     {
-        coordinators[CoordinatorType.List] = nil
+        self.listCoordinator = nil
     }
 }
 

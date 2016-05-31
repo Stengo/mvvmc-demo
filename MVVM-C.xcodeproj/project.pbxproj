@@ -10,7 +10,6 @@
 		6D1D27D71CF5ECE4005CDC1E /* AuthenticationCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D27D61CF5ECE4005CDC1E /* AuthenticationCoordinatorSpec.swift */; };
 		6DB659021CF828EC00A8CD8A /* ListCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB659011CF828EC00A8CD8A /* ListCoordinatorSpec.swift */; };
 		6DBFF6B21CF5C2F600428D40 /* AppCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFF6B11CF5C2F600428D40 /* AppCoordinatorSpec.swift */; };
-		6DBFF6B41CF5D12900428D40 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBFF6B31CF5D12900428D40 /* CoordinatorType.swift */; };
 		6DFBDE2B1CF83CA7005CB661 /* DetailCoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE2A1CF83CA7005CB661 /* DetailCoordinatorSpec.swift */; };
 		6DFBDE2F1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE2E1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift */; };
 		6DFBDE311CF8652E005CB661 /* MVVMCListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBDE301CF8652E005CB661 /* MVVMCListViewModelSpec.swift */; };
@@ -64,7 +63,6 @@
 		6D1D27D61CF5ECE4005CDC1E /* AuthenticationCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinatorSpec.swift; sourceTree = "<group>"; };
 		6DB659011CF828EC00A8CD8A /* ListCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCoordinatorSpec.swift; sourceTree = "<group>"; };
 		6DBFF6B11CF5C2F600428D40 /* AppCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorSpec.swift; sourceTree = "<group>"; };
-		6DBFF6B31CF5D12900428D40 /* CoordinatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		6DFBDE2A1CF83CA7005CB661 /* DetailCoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoordinatorSpec.swift; sourceTree = "<group>"; };
 		6DFBDE2E1CF8475D005CB661 /* MVVMCAuthenticateViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCAuthenticateViewModelSpec.swift; sourceTree = "<group>"; };
 		6DFBDE301CF8652E005CB661 /* MVVMCListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCListViewModelSpec.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				E296BBBD1CEDA0C500420864 /* Coordinator.swift */,
-				6DBFF6B31CF5D12900428D40 /* CoordinatorType.swift */,
 				E296BBBB1CEDA08B00420864 /* AppCoordinator.swift */,
 				E296BBC11CEDA41900420864 /* AuthenticationCoordinator.swift */,
 				E24810121CF08A7B002513B0 /* ListCoordinator.swift */,
@@ -491,7 +488,6 @@
 				E24810361CF1156E002513B0 /* MVVMCDetailViewController.swift in Sources */,
 				E24810281CF09282002513B0 /* MVVMCDataItem.swift in Sources */,
 				E24810151CF08B55002513B0 /* ListViewModel.swift in Sources */,
-				6DBFF6B41CF5D12900428D40 /* CoordinatorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

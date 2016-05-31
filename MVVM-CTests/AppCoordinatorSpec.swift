@@ -16,26 +16,21 @@ class AppCoordinatorSpec: QuickSpec {
             
             describe("startWithEndpoint") {
                 it("sets the list coordinator") {
-                    if (appCoordinator.coordinators[CoordinatorType.List] is ListCoordinator) == false {
-                        fail("Expected a ListCoordinator, got something else")
-                    }
+                    expect(appCoordinator.listCoordinator).toNot(beNil())
                 }
                 
                 it("sets itself as the list coordinators delegate") {
-                    let listCoordinator = appCoordinator.coordinators[CoordinatorType.List] as! ListCoordinator
-                    
-                    expect(listCoordinator.delegate!).to(beIdenticalTo(appCoordinator))
+                    expect(appCoordinator.listCoordinator!.delegate!).to(beIdenticalTo(appCoordinator))
                 }
             }
             
             describe("listCoordinatorDidFinish") {
                 beforeEach({
-                    let listCoordinator = appCoordinator.coordinators[CoordinatorType.List] as! ListCoordinator
-                    appCoordinator.listCoordinatorDidFinish(listCoordinator: listCoordinator)
+                    appCoordinator.listCoordinatorDidFinish(listCoordinator: appCoordinator.listCoordinator!)
                 })
                 
                 it("removes the list coordinator") {
-                    expect(appCoordinator.coordinators[CoordinatorType.List]).to(beNil())
+                    expect(appCoordinator.listCoordinator).to(beNil())
                 }
             }
         }
