@@ -46,7 +46,7 @@ extension AppCoordinator: AuthenticationCoordinatorDelegate
         authenticationCoordinator.start()
     }
     
-    func authenticationCoordinatorDidFinish(authenticationCoordinator authenticationCoordinator: AuthenticationCoordinator)
+    func authenticationCoordinatorDidFinish(authenticationCoordinator: AuthenticationCoordinator)
     {
         coordinators[CoordinatorType.Authentication] = nil
         showList()
@@ -64,7 +64,7 @@ extension AppCoordinator: ListCoordinatorDelegate
         listCoordinator.start()
     }
     
-    func listCoordinatorDidFinish(listCoordinator listCoordinator: ListCoordinator)
+    func listCoordinatorDidFinish(listCoordinator: ListCoordinator)
     {
         coordinators[CoordinatorType.List] = nil
     }

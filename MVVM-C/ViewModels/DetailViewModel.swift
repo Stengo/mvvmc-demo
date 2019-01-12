@@ -10,7 +10,7 @@ import Foundation
 
 protocol DetailViewModelViewDelegate: class
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel)
+    func detailDidChange(viewModel: DetailViewModel)
 }
 
 

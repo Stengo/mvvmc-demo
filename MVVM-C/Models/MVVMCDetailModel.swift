@@ -18,8 +18,8 @@ class MVVMCDetailModel: DetailModel
         self.item = detailItem
     }
     
-    func detail(completionHandler: (item: DataItem?) -> Void)
+    func detail(completionHandler: (_ item: DataItem?) -> Void)
     {
-        completionHandler(item: item)
+        completionHandler(item)
     }
 }

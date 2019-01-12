@@ -10,7 +10,7 @@ import Foundation
 
 protocol ListViewModelViewDelegate: class
 {
-    func itemsDidChange(viewModel viewModel: ListViewModel)
+    func itemsDidChange(viewModel: ListViewModel)
 }
 
 protocol ListViewModelCoordinatorDelegate: class

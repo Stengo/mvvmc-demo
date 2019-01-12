@@ -22,9 +22,9 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
         didSet {
             if oldValue != email {
                 let oldCanSubmit = canSubmit
-                emailIsValidFormat = validateEmailFormat(email)
+                emailIsValidFormat = validateEmailFormat(email: email)
                 if canSubmit != oldCanSubmit {
-                    viewDelegate?.canSubmitStatusDidChange(self, status: canSubmit)
+                    viewDelegate?.canSubmitStatusDidChange(viewModel: self, status: canSubmit)
                 }
             }
         }
@@ -38,9 +38,9 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
         didSet {
             if oldValue != password {
                 let oldCanSubmit = canSubmit
-                passwordIsValidFormat = validatePasswordFormat(password)
+                passwordIsValidFormat = validatePasswordFormat(password: password)
                 if canSubmit != oldCanSubmit {
-                    viewDelegate?.canSubmitStatusDidChange(self, status: canSubmit)
+                    viewDelegate?.canSubmitStatusDidChange(viewModel: self, status: canSubmit)
                 }
             }
         }
@@ -60,7 +60,7 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     private(set) var errorMessage: String = "" {
         didSet {
             if oldValue != errorMessage {
-                viewDelegate?.errorMessageDidChange(self, message: errorMessage)
+                viewDelegate?.errorMessageDidChange(viewModel: self, message: errorMessage)
             }
         }
     }
@@ -69,29 +69,29 @@ class MVVMCAuthenticateViewModel: AuthenticateViewModel
     {
         let REGEX: String
         REGEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
-        return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluateWithObject(email)
+        return NSPredicate(format: "SELF MATCHES %@", REGEX).evaluate(with: email)
     }
     
     
     /// Validate password is at least 6 characters
     private func validatePasswordFormat(password: String) -> Bool
     {
-        let trimmedString = password.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        return trimmedString.characters.count > 5
+        let trimmedString = password.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return trimmedString.count > 5
     }
     
     
     func submit()
     {
         errorMessage = ""
-        guard let dataModel = model where canSubmit else {
+        guard let dataModel = model, canSubmit else {
             errorMessage = NSLocalizedString("NOT_READY_TO_SUBMIT", comment: "")
             return
         }
         
         let modelCompletionHandler = { (error: NSError?) in
             //Make sure we are on the main thread
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 guard let error = error else {
                     self.coordinatorDelegate?.authenticateViewModelDidLogin(viewModel: self)
                     return

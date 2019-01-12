@@ -55,7 +55,7 @@ class MVVMCDetailViewController: UIViewController {
 
 extension MVVMCDetailViewController: DetailViewModelViewDelegate
 {
-    func detailDidChange(viewModel viewModel: DetailViewModel)
+    func detailDidChange(viewModel: DetailViewModel)
     {
         refreshDisplay()
     }

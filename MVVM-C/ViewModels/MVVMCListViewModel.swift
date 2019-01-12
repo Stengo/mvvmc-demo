@@ -23,7 +23,7 @@ class MVVMCListViewModel: ListViewModel
     var model: ListModel? {
         didSet {
             items = nil;
-            model?.items({ (items) in
+            model?.items(completionHandler: { (items) in
                 self.items = items
             })
         }
@@ -43,7 +43,7 @@ class MVVMCListViewModel: ListViewModel
     
     func itemAtIndex(index: Int) -> DataItem?
     {
-        if let items = items where items.count > index {
+        if let items = items, items.count > index {
             return items[index]
         }
         return nil
@@ -51,8 +51,8 @@ class MVVMCListViewModel: ListViewModel
     
     func useItemAtIndex(index: Int)
     {
-        if let items = items, coordinatorDelegate = coordinatorDelegate  where index < items.count {
-            coordinatorDelegate.listViewModelDidSelectData(self, data: items[index])
+        if let items = items, let coordinatorDelegate = coordinatorDelegate, index < items.count {
+            coordinatorDelegate.listViewModelDidSelectData(viewModel: self, data: items[index])
         }
     }
 }
