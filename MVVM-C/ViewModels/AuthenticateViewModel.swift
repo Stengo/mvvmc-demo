@@ -19,7 +19,7 @@ protocol AuthenticateViewModelViewDelegate: class
 
 protocol AuthenticateViewModelCoordinatorDelegate: class
 {
-    func authenticateViewModelDidLogin(viewModel viewModel: AuthenticateViewModel)
+    func authenticateViewModelDidLogin(viewModel: AuthenticateViewModel)
 }
 
 

@@ -33,8 +33,8 @@ class MVVMCAuthenticationViewController: UIViewController
         title = "Login"
         isLoaded = true;
         
-        emailField.addTarget(self, action: #selector(emailFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        emailField.addTarget(self, action: #selector(emailFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        passwordField.addTarget(self, action: #selector(passwordFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
 
         refreshDisplay()
     }
@@ -47,12 +47,12 @@ class MVVMCAuthenticationViewController: UIViewController
             emailField.text = viewModel.email
             passwordField.text = viewModel.password
             errorMessageLabel.text = viewModel.errorMessage
-            loginButton.enabled = viewModel.canSubmit
+            loginButton.isEnabled = viewModel.canSubmit
         } else {
             emailField.text = ""
             passwordField.text = ""
             errorMessageLabel.text = ""
-            loginButton.enabled = false
+            loginButton.isEnabled = false
         }
     }
     
@@ -61,14 +61,14 @@ class MVVMCAuthenticationViewController: UIViewController
         viewModel?.submit()
     }
     
-    func emailFieldDidChange(textField: UITextField)
+    @objc func emailFieldDidChange(textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.email = text
         }
     }
     
-    func passwordFieldDidChange(textField: UITextField)
+    @objc func passwordFieldDidChange(textField: UITextField)
     {
         if let text = textField.text {
             viewModel?.password = text
@@ -82,7 +82,7 @@ extension MVVMCAuthenticationViewController: AuthenticateViewModelViewDelegate
 {
     func canSubmitStatusDidChange(viewModel: AuthenticateViewModel, status: Bool)
     {
-        loginButton.enabled = status
+        loginButton.isEnabled = status
     }
     
     

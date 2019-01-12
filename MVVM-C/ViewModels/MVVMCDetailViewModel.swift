@@ -22,14 +22,14 @@ class MVVMCDetailViewModel: DetailViewModel
     
     var model: DetailModel? {
         didSet {
-            model?.detail({ (item) in
+            model?.detail(completionHandler: { (item) in
                 self.detail = item
             })
         }
     }
     
     func done() {
-        coordinatorDelegate?.detailViewModelDidEnd(self)
+        coordinatorDelegate?.detailViewModelDidEnd(viewModel: self)
     }
     
 }

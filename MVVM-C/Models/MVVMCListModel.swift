@@ -27,9 +27,9 @@ class MVVMCListModel: ListModel
         items.append(MVVMCDataItem(name: "Pavel Chekov", role: "Ensign"))
     }
     
-    func items(completionHandler: (items: [DataItem]) -> Void)
+    func items(completionHandler: (_ items: [DataItem]) -> Void)
     {
-        completionHandler(items: items)
+        completionHandler(items)
     }
 }
    

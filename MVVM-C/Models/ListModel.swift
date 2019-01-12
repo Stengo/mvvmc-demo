@@ -11,5 +11,5 @@ import Foundation
 
 protocol ListModel
 {
-    func items(completionHandler: (items: [DataItem]) -> Void)
+    func items(completionHandler: (_ items: [DataItem]) -> Void)
 }
